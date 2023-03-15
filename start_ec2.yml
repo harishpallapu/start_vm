@@ -1,0 +1,15 @@
+---
+- name: Start EC2 Instance
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars_files:
+    - start_var.yml
+    
+
+  tasks:
+    - name: Start EC2 instance
+      ec2:
+        instance_ids: "{{ instance_id }}"
+        state: running
+        region: "ap-south-1"
